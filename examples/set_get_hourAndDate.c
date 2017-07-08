@@ -41,12 +41,23 @@ void main(){
 	I2C_Init(I2C1, &I2C1_Init);
 	I2C_Cmd(I2C1, ENABLE);
 
-	SHT_Reset(I2C1);// soft reset sensor sht
+/****** config Time and Date *********/
 
-	float ReadT = SHT_ReadTemp(I2C1);// read temperature
+	// DS3231_WriteDate declaration in DS3231.h
+	DS3231_WriteDate.Date = 8;
+	DS3231_WriteDate.Day = 1;
+	DS3231_WriteDate.Hour = 21;
+	DS3231_WriteDate.Minutes = 59;
+	DS3231_WriteDate.Month = 7;
+	DS3231_WriteDate.Seconds = 36;
+	DS3231_WriteDate.Year = 17;
 
-  	float ReadRH = SHT_ReadHumidity(I2C1);// read humidity
+	DS3231_SetDateTime(I2C1, &DS3231_WriteDate);// set time and date
 
+/******* read Time and Date **********/
+
+	// DS3231_ReadDate declaration in DS3231.h
+	DS3231_GetDateTime(I2C1, &DS3231_ReadDate);// read time and date
 	while(1);
 	
 };
