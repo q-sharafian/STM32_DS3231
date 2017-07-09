@@ -1,7 +1,7 @@
 ﻿#include "stm32f10x.h"
 #include "stm32f10x_i2c.h"
 #include "stm32f10x_gpio.h"
-#include "SHT2x.h"
+#include "DS3231.h"
 #include "stm32f10x_rcc.h"
 
 void main(){
